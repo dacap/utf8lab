@@ -15,9 +15,9 @@ jobs:
       shell: bash
       run: |
         if [[ "${{ runner.os }}" == "Windows" ]] ; then
-          cmake . -G "NMake Makefiles"
+          cmake . -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=RelWithDebInfo
         else
-          cmake . -G "Unix Makefiles"
+          cmake . -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=RelWithDebInfo
         fi
     - name: Compiling
       shell: bash
