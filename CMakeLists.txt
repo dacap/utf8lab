@@ -38,6 +38,9 @@ add_dependencies(googlebenchmark googlebenchmark-project)
 
 add_executable(benchmarks benchmarks.cpp)
 target_link_libraries(benchmarks googlebenchmark)
+if(WIN32)
+  target_link_libraries(benchmarks shlwapi)
+endif()
 
 # Test data
 file(DOWNLOAD
