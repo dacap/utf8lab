@@ -21,4 +21,17 @@ static void BM_LafDecoder(benchmark::State& state) {
 }
 BENCHMARK(BM_LafDecoder);
 
+static void BM_LafDecoderCLZ(benchmark::State& state) {
+  buffer fc = read_file_content("utf8.data");
+  std::string c((const char*)&fc[0]);
+
+  while (state.KeepRunning()) {
+    utf8_decode decode(c);
+    while (int chr = decode.next_clz()) {
+      benchmark::DoNotOptimize(chr);
+    }
+  }
+}
+BENCHMARK(BM_LafDecoderCLZ);
+
 BENCHMARK_MAIN();
