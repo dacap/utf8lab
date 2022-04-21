@@ -26,6 +26,8 @@
   }
 #endif
 
+// Original code from:
+// https://github.com/aseprite/laf/blob/main/base/utf8_decode.h
 class utf8_decode {
 public:
   using string = std::string;
